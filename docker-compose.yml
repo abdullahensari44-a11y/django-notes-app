@@ -11,18 +11,9 @@ pipeline {
 
         stage("Code") {
             steps {
-                echo "Webhook triggered successfully!"
+                echo "Cloning code..."
                 git branch: 'main',
                     url: 'https://github.com/abdullahensari44-a11y/django-notes-app.git'
-            }
-        }
-
-        stage("Test") {
-            steps {
-                echo "Running webhook test..."
-                sh "date"
-                sh "sleep 5"
-                echo "Webhook test passed."
             }
         }
 
@@ -54,6 +45,7 @@ pipeline {
             steps {
                 sh '''
                 docker rm -f notes-app-container || true
+
                 docker run -d \
                   --name notes-app-container \
                   --env-file .env \
