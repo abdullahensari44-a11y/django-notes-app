@@ -1,4 +1,4 @@
-version: "3.8" 
+version: "3.8"
 
 services:
   nginx:
@@ -16,7 +16,7 @@ services:
   django_app:
     build:
       context: .
-    image: django_app
+    image: trainwithshubham/notes-app:latest
     container_name: "django_cont"
     ports:
       - "8000:8000"
@@ -50,7 +50,6 @@ services:
       retries: 5
       start_period: 60s
     networks:
-    
       - notes-app-nw
 
 networks:
